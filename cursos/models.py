@@ -1,0 +1,10 @@
+from django.db import models
+
+class Curso(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
+    carga_horaria = models.IntegerField()
+    ativo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nome
