@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .models import Aluno
+from .serializers import AlunoSerializer
 
-# Create your views here.
+class AlunoViewSet(ModelViewSet):
+    queryset = Aluno.objects.all()
+    serializer_class = AlunoSerializer
