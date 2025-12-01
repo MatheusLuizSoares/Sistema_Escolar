@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+<h2>Cursos Disponíveis</h2>
+<table class="table table-hover">
+
+<tr>
+  <th>Nome</th>
+  <th>Descrição</th>
+  <th>Carga Horária</th>
+  <th>Status</th>
+</tr>
+
+{% for curso in cursos %}
+<tr>
+  <td>{{ curso.nome }}</td>
+  <td>{{ curso.descricao }}</td>
+  <td>{{ curso.carga_horaria }}</td>
+  <td>
+    {% if curso.ativo %}Ativo{% else %}Inativo{% endif %}
+  </td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}

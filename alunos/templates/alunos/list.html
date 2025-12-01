@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Alunos{% endblock %}
+
+{% block content %}
+<h2>Alunos Cadastrados</h2>
+<table class="table table-bordered table-striped">
+
+<tr>
+  <th>Nome</th>
+  <th>Email</th>
+  <th>Nascimento</th>
+</tr>
+
+{% for aluno in alunos %}
+<tr>
+  <td>{{ aluno.nome }}</td>
+  <td>{{ aluno.email }}</td>
+  <td>{{ aluno.data_nascimento }}</td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}

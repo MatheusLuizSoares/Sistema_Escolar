@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Matrículas{% endblock %}
+
+{% block content %}
+<h2>Matrículas Realizadas</h2>
+<table class="table table-sm table-striped">
+
+<tr>
+  <th>Aluno</th>
+  <th>Curso</th>
+  <th>Data</th>
+  <th>Status</th>
+</tr>
+
+{% for m in matriculas %}
+<tr>
+  <td>{{ m.aluno }}</td>
+  <td>{{ m.curso }}</td>
+  <td>{{ m.data_matricula }}</td>
+  <td>{{ m.status }}</td>
+</tr>
+{% endfor %}
+
+</table>
+{% endblock %}
