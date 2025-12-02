@@ -1,11 +1,5 @@
-from rest_framework.viewsets import ModelViewSet
-from .models import Matricula
-from .serializers import MatriculaSerializer
 from django.shortcuts import render
-
-class MatriculaViewSet(ModelViewSet):
-    queryset = Matricula.objects.all()
-    serializer_class = MatriculaSerializer
+from .models import Matricula
 
 def matriculas_list(request):
     matriculas = Matricula.objects.all()

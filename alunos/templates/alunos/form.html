@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Aluno</h3>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Salvar</button>
+    <a href="/alunos/" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

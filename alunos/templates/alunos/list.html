@@ -2,22 +2,33 @@
 {% block title %}Alunos{% endblock %}
 
 {% block content %}
-<h2>Alunos Cadastrados</h2>
-<table class="table table-bordered table-striped">
+<h2 class="text-center mb-4">Lista de Alunos</h2>
 
-<tr>
-  <th>Nome</th>
-  <th>Email</th>
-  <th>Nascimento</th>
-</tr>
+<a href="/alunos/novo/" class="btn btn-success mb-3">➕ Novo Aluno</a>
 
-{% for aluno in alunos %}
-<tr>
-  <td>{{ aluno.nome }}</td>
-  <td>{{ aluno.email }}</td>
-  <td>{{ aluno.data_nascimento }}</td>
-</tr>
-{% endfor %}
-
+<table class="table table-striped shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Nascimento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>{{ aluno.data_nascimento }}</td>
+            <td>
+                <a href="/alunos/editar/{{ aluno.id }}/" class="btn btn-warning btn-sm">✏️</a>
+                <a href="/alunos/excluir/{{ aluno.id }}/" class="btn btn-danger btn-sm">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
+
+<a href="/" class="btn btn-outline-primary">⬅️ Voltar</a>
 {% endblock %}
