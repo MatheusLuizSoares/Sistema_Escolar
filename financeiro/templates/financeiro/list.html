@@ -1,89 +1,123 @@
-<!-- financeiro/templates/financeiro/list.html -->
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista Financeiro</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
+{% extends "base.html" %}
+{% block content %}
 
-        h1 {
-            color: #333;
-            text-align: center;
-        }
+<h2 class="titulo">Lista de Financeiros</h2>
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-        }
+<div class="card-list">
+    <a href="{% url 'financeiro:financeiro_create' %}" class="btn">Criar Financeiro</a>
 
-        a.button {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
+    {% if dados %}
+        <table class="financeiro-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in dados %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.descricao }}</td>
+                        <td>R$ {{ item.valor }}</td>
+                        <td>{{ item.data }}</td>
+                        <td>{{ item.status|capfirst }}</td>
+                        <td>
+                            <a href="{% url 'financeiro:financeiro_edit' item.id %}" class="btn-small edit">Editar</a>
+                            <a href="{% url 'financeiro:financeiro_delete' item.id %}" class="btn-small delete" onclick="return confirm('Deseja realmente deletar?');">Deletar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="empty">Nenhum registro encontrado.</p>
+    {% endif %}
+</div>
 
-        a.button:hover {
-            background-color: #0056b3;
-        }
+<style>
+    .titulo {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .card-list {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 900px;
+        margin: auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-        li {
-            padding: 10px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid #ddd;
-        }
+    .financeiro-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
 
-        li:last-child {
-            border-bottom: none;
-        }
+    .financeiro-table th,
+    .financeiro-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
 
-        .empty {
-            color: #888;
-            font-style: italic;
-        }
+    .financeiro-table th {
+        background-color: #f2f2f2;
+        font-weight: 600;
+    }
 
-        .actions {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Lista Financeiro</h1>
+    .btn {
+        padding: 8px 16px;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-        <a href="{% url 'financeiro:financeiro_create' %}" class="button">Criar Financeiro</a>
+    .btn:hover {
+        background: #2980b9;
+    }
 
-        <ul>
-            {% for item in dados %}
-                <li>{{ item.id }} - {{ item.nome }} - {{ item.valor }}</li>
-            {% empty %}
-                <li class="empty">Nenhum registro encontrado.</li>
-            {% endfor %}
-        </ul>
+    .btn-small {
+        padding: 4px 10px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        margin-right: 5px;
+    }
 
-        <div class="actions">
-            <a href="/" class="button" style="background-color: #6c757d;">Voltar</a>
-        </div>
-    </div>
-</body>
-</html>
+    .edit {
+        background-color: #28a745;
+    }
+
+    .edit:hover {
+        background-color: #218838;
+    }
+
+    .delete {
+        background-color: #dc3545;
+    }
+
+    .delete:hover {
+        background-color: #c82333;
+    }
+
+    .empty {
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        margin-top: 20px;
+    }
+</style>
+
+{% endblock %}
