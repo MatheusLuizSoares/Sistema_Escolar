@@ -1,0 +1,10 @@
+<h1>{% if item %}Editar{% else %}Novo{% endif %} Relatório</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Título:</label><br>
+    <input type="text" name="titulo" value="{{ item.titulo|default:'' }}"><br>
+    <label>Descrição:</label><br>
+    <textarea name="descricao">{{ item.descricao|default:'' }}</textarea><br>
+    <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'relatorio_list' %}">Voltar</a>

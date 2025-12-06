@@ -5,30 +5,52 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-4">
+    <!-- Alunos -->
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card shadow p-3 mb-4">
             <h4>📘 Alunos</h4>
             <p>Gerencie dados dos alunos</p>
-            <a href="/alunos/" class="btn btn-primary w-100">Acessar</a>
+            <a href="{% url 'alunos_list' %}" class="btn btn-primary w-100">Acessar</a>
             <a href="/api/alunos/" class="btn btn-outline-secondary btn-sm mt-2 w-100">API</a>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <!-- Cursos -->
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card shadow p-3 mb-4">
             <h4>📚 Cursos</h4>
             <p>Controle de cursos disponíveis</p>
-            <a href="/cursos/" class="btn btn-success w-100">Acessar</a>
+            <a href="{% url 'cursos_list' %}" class="btn btn-success w-100">Acessar</a>
             <a href="/api/cursos/" class="btn btn-outline-secondary btn-sm mt-2 w-100">API</a>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <!-- Matrículas -->
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card shadow p-3 mb-4">
             <h4>📝 Matrículas</h4>
             <p>Controle de matrículas</p>
-            <a href="/matriculas/" class="btn btn-warning w-100">Acessar</a>
+            <a href="{% url 'matriculas_list' %}" class="btn btn-warning w-100">Acessar</a>
             <a href="/api/matriculas/" class="btn btn-outline-secondary btn-sm mt-2 w-100">API</a>
+        </div>
+    </div>
+
+    <!-- Financeiro -->
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card shadow p-3 mb-4">
+            <h4>💰 Financeiro</h4>
+            <p>Controle financeiro de cursos e matrículas</p>
+            <a href="{% url 'financeiro_list' %}" class="btn btn-info w-100">Acessar</a>
+            
+        </div>
+    </div>
+
+    <!-- Relatório -->
+    <div class="col-12 col-sm-6 col-md-4">
+        <div class="card shadow p-3 mb-4">
+            <h4>🗂️ Relatórios</h4>
+            <p>Visualize relatórios do sistema</p>
+            <a href="{% url 'relatorio_list' %}" class="btn btn-secondary w-100">Acessar</a>
         </div>
     </div>
 </div>

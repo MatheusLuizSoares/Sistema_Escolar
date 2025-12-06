@@ -1,0 +1,89 @@
+<!-- financeiro/templates/financeiro/list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Financeiro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .empty {
+            color: #888;
+            font-style: italic;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista Financeiro</h1>
+
+        <a href="{% url 'financeiro:financeiro_create' %}" class="button">Criar Financeiro</a>
+
+        <ul>
+            {% for item in dados %}
+                <li>{{ item.id }} - {{ item.nome }} - {{ item.valor }}</li>
+            {% empty %}
+                <li class="empty">Nenhum registro encontrado.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="actions">
+            <a href="/" class="button" style="background-color: #6c757d;">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

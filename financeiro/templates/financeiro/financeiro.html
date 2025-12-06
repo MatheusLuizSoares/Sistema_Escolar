@@ -1,0 +1,35 @@
+<h2>Financeiro</h2>
+
+<h3>Matrículas</h3>
+<table>
+    <tr>
+        <th>Aluno</th>
+        <th>Curso</th>
+        <th>Status</th>
+        <th>Valor</th>
+    </tr>
+    {% for m in matriculas %}
+    <tr>
+        <td>{{ m.aluno.nome }}</td>
+        <td>{{ m.curso.nome }}</td>
+        <td>{{ m.status }}</td>
+        <td>{{ m.valor }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Totais por aluno</h3>
+<table>
+    <tr>
+        <th>Aluno</th>
+        <th>Total Pago</th>
+        <th>Total Devido</th>
+    </tr>
+    {% for t in totais_por_aluno %}
+    <tr>
+        <td>{{ t.aluno__nome }}</td>
+        <td>{{ t.total_pago|default:0 }}</td>
+        <td>{{ t.total_devido|default:0 }}</td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,33 @@
+<h2>Histórico do Aluno</h2>
+<table>
+<tr><th>Curso</th><th>Status</th><th>Valor</th></tr>
+{% for m in matriculas %}
+<tr>
+    <td>{{ m.curso.nome }}</td>
+    <td>{{ m.status }}</td>
+    <td>{{ m.curso.valor }}</td>
+</tr>
+{% endfor %}
+</table>
+<p>Total Pago: {{ total_pago }}</p>
+<p>Total Devido: {{ total_devido }}</p>
+
+# app/relatorios/views.py
+from django.db.models import Count, Q
+from alunos.models import Aluno
+from cursos.models import Curso
+from matriculas.models import Matricula
+
+def dashboard(request):
+    total_alunos = Aluno.objects.count()
+    cursos_ativos = Curso.objects.filter(status=True).count()
+    matriculas_pagas = Matricula.objects.filter(status='pago').count()
+    matriculas_pendentes = Matricula.objects.filter(status='pendente').count()
+
+    context = {
+        'total_alunos': total_alunos,
+        'cursos_ativos': cursos_ativos,
+        'matriculas_pagas': matriculas_pagas,
+        'matriculas_pendentes': matriculas_pendentes,
+    }
+    return render(request, 'dashboard.html', context)

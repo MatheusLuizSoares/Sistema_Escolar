@@ -6,4 +6,5 @@ urlpatterns = [
     path('novo/', views.aluno_create, name='aluno_create'),
     path('editar/<int:id>/', views.aluno_edit, name='aluno_edit'),
     path('excluir/<int:id>/', views.aluno_delete, name='aluno_delete'),
+    
 ]

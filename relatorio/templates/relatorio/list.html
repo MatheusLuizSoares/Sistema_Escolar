@@ -1,0 +1,11 @@
+<h1>Relatórios</h1>
+<a href="{% url 'relatorio_create' %}">Novo Relatório</a>
+<ul>
+    {% for item in dados %}
+    <li>
+        {{ item.titulo }} - 
+        <a href="{% url 'relatorio_edit' item.id %}">Editar</a> | 
+        <a href="{% url 'relatorio_delete' item.id %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>

@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'alunos',
     'cursos',
-    'matriculas'
+    'matriculas',
+    'financeiro',
+    'relatorio',
     
 
 ]
