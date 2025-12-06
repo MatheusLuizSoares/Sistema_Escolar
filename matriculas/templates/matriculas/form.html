@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Formulário Matrícula{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Cadastro de Matrícula</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Aluno:</label>
+    <select name="aluno" class="form-control mb-2">
+        {% for a in alunos %}
+            <option value="{{ a.id }}" 
+            {% if matricula and matricula.aluno.id == a.id %}selected{% endif %}>
+                {{ a }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label>Curso:</label>
+    <select name="curso" class="form-control mb-2">
+        {% for c in cursos %}
+            <option value="{{ c.id }}"
+            {% if matricula and matricula.curso.id == c.id %}selected{% endif %}>
+                {{ c }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label>Status:</label>
+    <select name="status" class="form-control mb-3">
+        {% for key, value in status_choices %}
+            <option value="{{ key }}"
+            {% if matricula and matricula.status == key %}selected{% endif %}>
+                {{ value }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-success">Salvar</button>
+    <a href="{% url 'matriculas_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

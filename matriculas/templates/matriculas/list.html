@@ -2,24 +2,33 @@
 {% block title %}Matrículas{% endblock %}
 
 {% block content %}
-<h2>Matrículas Realizadas</h2>
+<h2 class="mb-3">Matrículas</h2>
+
+<a href="{% url 'matricula_create' %}" class="btn btn-primary btn-sm mb-3">+ Nova Matrícula</a>
+
 <table class="table table-sm table-striped">
+    <tr>
+        <th>Aluno</th>
+        <th>Curso</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
 
-<tr>
-  <th>Aluno</th>
-  <th>Curso</th>
-  <th>Data</th>
-  <th>Status</th>
-</tr>
-
-{% for m in matriculas %}
-<tr>
-  <td>{{ m.aluno }}</td>
-  <td>{{ m.curso }}</td>
-  <td>{{ m.data_matricula }}</td>
-  <td>{{ m.status }}</td>
-</tr>
-{% endfor %}
-
+    {% for m in matriculas %}
+    <tr>
+        <td>{{ m.aluno }}</td>
+        <td>{{ m.curso }}</td>
+        <td>{{ m.data_matricula }}</td>
+        <td>{{ m.status }}</td>
+        <td>
+            <a href="{% url 'matricula_update' m.id %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'matricula_delete' m.id %}" class="btn btn-danger btn-sm">Excluir</a>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
+
+<a href="/" class="btn btn-secondary btn-sm mt-3">⬅ Voltar</a>
+
 {% endblock %}
