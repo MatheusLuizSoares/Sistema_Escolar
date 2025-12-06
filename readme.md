@@ -1,67 +1,71 @@
-#  Sistema Escolar — Academia Dev Python
+# Sistema Escolar — Academia Dev Python
 
 Sistema de gerenciamento acadêmico desenvolvido com **Django**, **Django REST Framework**, **PostgreSQL** e totalmente **Dockerizado**.  
 Permite administrar **alunos, cursos e matrículas**, oferecendo interface web e API REST completa.
 
 ---
 
-##  Funcionalidades
+## Funcionalidades
 
-###  Alunos
+### Alunos
 - Cadastro de alunos  
 - Listagem  
 - Edição  
 - Exclusão  
 - API REST completa
 
-###  Cursos
+### Cursos
 - Cadastro e edição de cursos  
 - Status ativo/inativo  
 - API REST completa
 
-###  Matrículas
+### Matrículas
 - Relação entre alunos e cursos  
 - Registro automático da data  
 - Status da matrícula (ativa, cancelada, concluída)  
 - API REST completa
 
-###  Recursos adicionais
+### Financeiro
+- CRUD completo: criar, editar, listar e deletar registros  
+- Controle de descrição, valor, data e status
+
+### Recursos adicionais
 - Interface administrativa Django  
 - Templates HTML com Bootstrap  
-- Organização modular (alunos, cursos, matrículas)
+- Organização modular (alunos, cursos, matrículas, financeiro)
 
 ---
 
-##  Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-- **Python 3.11**
-- **Django**
-- **Django REST Framework**
-- **PostgreSQL**
-- **Docker & Docker Compose**
-- **Bootstrap 5**
+- **Python 3.11**  
+- **Django**  
+- **Django REST Framework**  
+- **PostgreSQL**  
+- **Docker & Docker Compose**  
+- **Bootstrap 5**  
 - **HTML + Templates Jinja2**
 
-
 ---
 
-##  Como Rodar o Projeto
+## Como Rodar o Projeto
 
-### **Requisitos obrigatórios**
+### Requisitos obrigatórios
 - Docker  
 - Docker Compose  
 
 ---
 
-##  Passo a passo
+### Passo a passo
 
-Clone o repositório:
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/MatheusLuizSoares/Sistema_Escolar.git
 cd Sistema_Escolar
 docker-compose up --build -d
 docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py createsuperuser
 
-
+Django Admin:
+Usuário: mathe
+Senha: 123
