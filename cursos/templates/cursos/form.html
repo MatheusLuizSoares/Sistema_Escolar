@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro de Curso{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Cadastro de Curso</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Nome:</label>
+    <input type="text" name="nome" class="form-control mb-2"
+           value="{{ curso.nome|default:'' }}" required>
+
+    <label>Descrição:</label>
+    <textarea name="descricao" class="form-control mb-2" required>{{ curso.descricao|default:'' }}</textarea>
+
+    <label>Carga Horária:</label>
+    <input type="number" name="carga_horaria" class="form-control mb-2"
+           value="{{ curso.carga_horaria|default:'' }}" required>
+
+    <label class="mt-2">
+        <input type="checkbox" name="ativo"
+               {% if curso.ativo %}checked{% endif %}>
+        Ativo
+    </label>
+
+    <br><br>
+    <button class="btn btn-success">Salvar</button>
+    <a href="{% url 'cursos_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}
