@@ -1,38 +1,67 @@
-# Sistema_Escolar
-# Sistema Academia Dev Python
+#  Sistema Escolar — Academia Dev Python
 
-Sistema de gerenciamento acadêmico simples com Django, PostgreSQL e Docker.
+Sistema de gerenciamento acadêmico desenvolvido com **Django**, **Django REST Framework**, **PostgreSQL** e totalmente **Dockerizado**.  
+Permite administrar **alunos, cursos e matrículas**, oferecendo interface web e API REST completa.
 
-## Funcionalidades
+---
 
-- Cadastro de alunos
-- Cadastro de cursos
-- Matrículas entre alunos e cursos
-- Interface admin
-- API REST
-- Dockerizado
+##  Funcionalidades
 
-## Tecnologias
+###  Alunos
+- Cadastro de alunos  
+- Listagem  
+- Edição  
+- Exclusão  
+- API REST completa
 
-- Python 3.11
-- Django
-- Django REST Framework
-- PostgreSQL
-- Docker e Docker Compose
-- Bootstrap
+###  Cursos
+- Cadastro e edição de cursos  
+- Status ativo/inativo  
+- API REST completa
 
-## Como rodar o projeto
+###  Matrículas
+- Relação entre alunos e cursos  
+- Registro automático da data  
+- Status da matrícula (ativa, cancelada, concluída)  
+- API REST completa
 
-### Requisitos
-- Docker
-- Docker Compose
+###  Recursos adicionais
+- Interface administrativa Django  
+- Templates HTML com Bootstrap  
+- Organização modular (alunos, cursos, matrículas)
 
-### Passos
+---
+
+##  Tecnologias Utilizadas
+
+- **Python 3.11**
+- **Django**
+- **Django REST Framework**
+- **PostgreSQL**
+- **Docker & Docker Compose**
+- **Bootstrap 5**
+- **HTML + Templates Jinja2**
+
+
+---
+
+##  Como Rodar o Projeto
+
+### **Requisitos obrigatórios**
+- Docker  
+- Docker Compose  
+
+---
+
+##  Passo a passo
+
+Clone o repositório:
 
 ```bash
-Git Clone: https://github.com/MatheusLuizSoares/Sistema_Escolar.git
+git clone https://github.com/MatheusLuizSoares/Sistema_Escolar.git
 cd Sistema_Escolar
-
-docker-compose up --build
+docker-compose up --build -d
 docker-compose exec web python manage.py migrate
 docker-compose exec web python manage.py createsuperuser
+
+
