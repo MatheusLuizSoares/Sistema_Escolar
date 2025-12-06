@@ -17,15 +17,15 @@
 
     {% for curso in cursos %}
     <tr>
-        <td>{{ curso.nome }}</td>
-        <td>{{ curso.descricao }}</td>
-        <td>{{ curso.carga_horaria }}</td>
-        <td>
-            {% if curso.ativo %}
-                <span class="text-success">Ativo</span>
-            {% else %}
-                <span class="text-danger">Inativo</span>
-            {% endif %}
+      <td>{{ curso.nome }}</td>
+      <td>{{ curso.descricao }}</td>
+      <td>{{ curso.carga_horaria }}</td>
+      <td>
+          {% if curso.ativo %}
+          <span class="text-success">Ativo</span>
+          {% else %}
+           <span class="text-danger">Inativo</span>
+          {% endif %}
         </td>
         <td>
             <a href="{% url 'curso_update' curso.id %}" class="btn btn-warning btn-sm">Editar</a>
